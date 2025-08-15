@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'tela_login.dart';
-
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart'; // Certifique-se de que este arquivo existe e está correto
 

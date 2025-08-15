@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'home.dart';
 import 'cadastro.dart';
+import 'recuperar.dart';
 import 'globals.dart' as globals;
 
 class TelaLogin extends StatelessWidget {
@@ -15,9 +16,9 @@ class TelaLogin extends StatelessWidget {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: senhaController.text.trim(),
-      );
+            email: emailController.text.trim(),
+            password: senhaController.text.trim(),
+          );
       globals.userId = userCredential.user?.uid;
 
       Navigator.pushReplacement(
@@ -64,10 +65,7 @@ class TelaLogin extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/logo_eu_empreendedor.png',
-                  height: 230,
-                ),
+                Image.asset('assets/logo_eu_empreendedor.png', height: 230),
                 const SizedBox(height: 30),
                 TextField(
                   controller: emailController,
@@ -99,7 +97,12 @@ class TelaLogin extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {
-                      // Função de recuperação de senha
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RecuperarSenhaPage(),
+                        ),
+                      );
                     },
                     child: const Text(
                       'Esqueceu a senha?',
@@ -153,10 +156,7 @@ class TelaLogin extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Image.asset(
-                  'assets/logo_ifsuldeminas.png',
-                  height: 60,
-                ),
+                Image.asset('assets/logo_ifsuldeminas.png', height: 60),
               ],
             ),
           ),
